@@ -1,21 +1,33 @@
 import Image from "next/image";
 import { draftMode } from "next/headers";
 import { groq } from "next-sanity";
+import { sanityFetch } from "@/sanity/lib/fetch";
+import PreviewBlogList from "../components/PreviewBlogList";
+import BlogList, { query } from "../components/BlogList";
+import LiveQuery from "next-sanity/preview/live-query";
 
-export default function Home() {
+export default async function Home() {
   const preview = draftMode().isEnabled;
-  const query = groq`
-  *[_type=='post']{
-    ...,
-    author->,
-    categories[]->
-  } | order(_createdAt desc)
-  `;
+  // const query = groq`
+  // *[_type=='post']{
+  //   ...,
+  //   author->,
+  //   categories[]->
+  // } | order(_createdAt desc)
+  // `;
 
-  if (preview) return <div>Preview Mode</div>;
+  const data = await sanityFetch<[]>({ query, tags: [] });
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Home
+      <LiveQuery
+        enabled={draftMode().isEnabled}
+        query={query}
+        initialData={data}
+        as={PreviewBlogList}
+      >
+        <BlogList data={data} />
+      </LiveQuery>
     </main>
   );
 }

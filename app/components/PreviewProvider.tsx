@@ -15,6 +15,7 @@ export default function PreviewProvider({
   children: React.ReactNode;
   token?: string;
 }) {
+  console.log("PreviewProvider");
   const { client } = suspend(
     () => import("../../sanity/lib/client"),
     [UniqueKey]
