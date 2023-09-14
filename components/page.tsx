@@ -2,8 +2,8 @@ import Image from "next/image";
 import { draftMode } from "next/headers";
 import { groq } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/fetch";
-import PreviewBlogList from "../../components/PreviewBlogList";
-import BlogList, { query } from "../../components/BlogList";
+import PreviewBlogList from "./PreviewBlogList";
+import BlogList, { query } from "./BlogList";
 import LiveQuery from "next-sanity/preview/live-query";
 
 export default async function Home() {

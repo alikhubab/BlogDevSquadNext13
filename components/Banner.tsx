@@ -6,7 +6,7 @@ function Banner() {
     "
     >
       <div>
-        <h1 className="text-7xl">DEVSQUAD'S Daily Blog</h1>
+        <h1 className="text-7xl">DEVSQUAD'S Daily</h1>
         <h2 className="mt-5 md:mt-0">
           Welcome to{" "}
           <span className="underline decoration-4 decoration-[#F7AB0A]">

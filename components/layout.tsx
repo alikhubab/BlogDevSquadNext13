@@ -1,8 +1,8 @@
 import "../globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Header from "../../components/Header";
-import Banner from "../../components/Banner";
+import Header from "./Header";
+import Banner from "./Banner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,11 +13,9 @@ export const metadata: Metadata = {
 
 import dynamic from "next/dynamic";
 import { draftMode } from "next/headers";
-import { token } from "../../sanity/lib/fetch";
+import { token } from "../sanity/lib/fetch";
 
-const PreviewProvider = dynamic(
-  () => import("../../components/PreviewProvider")
-);
+const PreviewProvider = dynamic(() => import("./PreviewProvider"));
 
 export default async function RootLayout({
   children,
@@ -26,7 +24,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="max-w-7xl mx-auto">
+      <body className={inter.className}>
         <Header />
         <Banner />
         {draftMode().isEnabled ? (

@@ -5,7 +5,7 @@ import React from "react";
 function Header() {
   return (
     <header
-      className="flex items-center 
+      className="flex flex-col space-y-4 md:flex-row md:items-center 
     justify-between 
     space-x-2 font-bold 
     px-10 py-5"
@@ -25,10 +25,9 @@ function Header() {
         <Link
           href={"/"}
           className="px-5 py-3 
-            text-sm md:text-base
+            text-xs md:text-base
              bg-gray-900
               text-[#F7AB0A] 
-              flex items-center 
               rounded-full text-center"
         >
           Contact DEVSQUAD if you want to build something.
